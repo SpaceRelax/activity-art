@@ -24,7 +24,7 @@ risk:
   fallbackDirection: "如果九维度过于复杂，退化为更轻量的三维模型（道、法、序）"
 
 resource:
-  tools: "gh (GitHub CLI)、git、terminal、web search、write_file、patch"
+  tools: "search (网络搜索)、gh (GitHub CLI)"
   skills: "github-auth"
   hardConstraints: "必须使用 Git 版本控制；README 和 spec 必须保持中文为主；不允许编造示例；仓库必须公开"
 
