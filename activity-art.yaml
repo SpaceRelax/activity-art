@@ -1,0 +1,74 @@
+# ========== meta（契）：管理元数据 ==========
+meta:
+  id: 1776873519000
+  createdAt: "2026-04-22 00:19:00"
+  updatedAt: "2026-04-22 23:58:00"
+
+# ========== purpose（道）：目标与底线 ==========
+purpose:
+  objective: "定义一套通用的活动描述规范，让任何 agent 或人类都能基于 activity.json 和 activity-pu.md 快速理解并续接一个活动"
+  successCriteria: "spec 能自洽地描述自身项目，且能覆盖至少一个非 trivial 的真实活动"
+  nonNegotiables: "不编造示例；不绑定执行引擎；字段按需出现"
+
+# ========== status（势）：当前阶段 ==========
+status:
+  phase: growth
+  nextMilestone: "完成 dogfooding：用 spec 描述 activity-art 自身，并发现字段缺陷"
+
+# ========== risk（险）：风险与假设 ==========
+risk:
+  keyAssumptions: "活动可以被通用模型描述；古典文本的维度映射对现代工程有参考价值；YAML/JSON 格式足够表达活动状态"
+  topRisks:
+    - description: "维度设计过度，小活动用不上"
+      mitigation: "保持字段可选，强制按需出现"
+    - description: "古籍映射牵强，被人诟病附会"
+      mitigation: "README 中诚实承认个人解读，不声称唯一真理"
+    - description: "agent 场景下 spec 字段不够结构化，无法被程序解析"
+      mitigation: "现阶段先保证人类可读，机器可解析是远期目标"
+  fallbackDirection: "如果九维度过于复杂，退化为更轻量的三维度模型（道、法、序）"
+
+# ========== resource（地）：资源与约束 ==========
+resource:
+  resources: "GitHub 仓库、YAML 编辑器、古典文本知识、agent 交互经验、网络代理（GitHub 访问）"
+  hardConstraints: "必须使用 Git 版本控制；README 和 spec 必须保持中文为主；不允许编造示例；仓库必须公开"
+
+# ========== rule（法）：规则与流程 ==========
+rule:
+  decisionAuthority: "SpaceRelax 拥有最终决策权，agent 只能建议，不可执行不可逆操作（如仓库创建）前必须逐项确认"
+  acceptanceCriteria: "每次 spec 变更必须同步更新 dogfooding 文件；新增字段必须有古籍出处或现实痛点支撑；禁止为完备性而添加未经验证的字段"
+  mandatoryProcesses: "任何改动先写本地文件，preview 确认后再 push；保持 commit message 中英双语；issue/PR 暂不接受（WIP 阶段）"
+
+# ========== stakeholder（情）：干系人（Subagent） ==========
+stakeholder:
+  subAgents:
+    - type: "Claude/Hermes Agent"
+      expectedSpeed: "异步，分钟级响应"
+      expectedQuality: "能精确执行 patch/terminal 操作，理解古典文本隐喻，拒绝语言歧义"
+      subjectiveNote: "在语言精度和概念边界上极其敏感，需要多次对齐；倾向'思路不对'时直接指出而非继续生成"
+  verificationNote: "如果 agent 连续两次没理解意图，暂停并重新描述问题；agent 的输出若被评价为'很怪'则视为未通过验证"
+
+# ========== action（序）：流程步骤 ==========
+action:
+  steps:
+    - description: "用 dogfooding 检验 spec 字段实用性"
+      dependency: "spec 草稿已完成"
+    - description: "根据 dogfooding 发现回改 activity.spec.yaml"
+      dependency: "完成 activity-art.yaml 填写"
+    - description: "补充至少一个真实非 trivial 活动案例"
+      dependency: "spec 字段稳定"
+    - description: "撰写 activity-art-pu.md（方法论/式）"
+      dependency: "activity-art.yaml 定稿"
+  completed:
+    - description: "创建 GitHub 仓库并初始化 README、LICENSE、.gitignore"
+      completedAt: "2026-04-22 08:19:00"
+    - description: "定义九维度 YAML spec 草稿"
+      completedAt: "2026-04-22 23:52:00"
+    - description: "仓库 push 完成，README + spec 上线"
+      completedAt: "2026-04-22 23:58:00"
+  priorityPrinciple: "诚实优先于完美；能描述真实活动优先于覆盖 edge case"
+
+# ========== mirror（鉴）：历史镜鉴 ==========
+mirror:
+  historicalPrecedents: "三省六部·Edict（组织元数据模型）——过于偏重组织结构，不适用于通用活动；女娲.skill（技能模板系统）——偏向执行模板而非状态描述，无法解决上下文交接问题"
+  causalChain: "agent 长任务上下文丢失（OpenClaw 场景） → 发现没有通用活动模型 → 想到古典文本已有分散洞察 → 决定提炼为 JSON Schema → 实践后发现人类可读优先，退化为 YAML 规范 → 当前"
+  keyLessons: "不要一开始就追求机器可验证的 JSON Schema，人类可读的规范先跑通更重要；命名比结构更难，activity-art 这个名字迭代了多轮才确定；agent 协作需要'preview → confirm → execute'节奏，不可跳过确认"
