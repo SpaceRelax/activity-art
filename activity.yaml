@@ -35,18 +35,18 @@ rule:
 stakeholder:
   subAgents:
     - type: "调研agent"
-      role: "负责调研现有活动管理方法、古籍相关概念、类似项目（三省六部、女娲.skill 等），输出调研结论供决策参考"
-      expectedOutput: "古籍维度映射表、竞品分析报告、命名建议"
+      role: "调研有哪些古籍可能对活动建模有参考价值"
+      expectedOutput: "古籍候选清单，附简要相关性说明"
     - type: "归档agent"
-      role: "负责维护 activity.yaml 文件本身，记录活动状态变更，管理 Git 版本控制，确保仓库结构整洁"
-      expectedOutput: "更新后的 activity.yaml、清晰的 commit history、同步的远程仓库"
+      role: "对选定的古籍进行归档记录，建立可查阅的文献档案"
+      expectedOutput: "已归档古籍列表及基本信息（书名、朝代、核心概念）"
     - type: "分析agent"
-      role: "负责评估 schema 设计合理性，检查字段是否冗余、维度是否完整、古籍映射是否准确，发现设计缺陷"
-      expectedOutput: "schema 缺陷报告、字段增删建议、逻辑一致性检查"
+      role: "深入分析和理解已归档古籍的内容，提炼与活动建模相关的维度、概念和洞察"
+      expectedOutput: "古籍概念映射报告，提炼出的候选维度及出处依据"
     - type: "实施agent"
-      role: "负责执行具体操作（文件读写、git、GitHub API、终端命令），按确认后的方案落地"
-      expectedOutput: "完成的文件修改、成功的 push、可访问的仓库页面"
-  verificationNote: "调研结论必须经过 SpaceRelax 确认后才能进入实施；分析发现的问题必须回到调研或归档环节闭环"
+      role: "根据古籍分析结果改进项目（调整 schema、更新文档、维护仓库）"
+      expectedOutput: "改进后的 spec/文档/代码，以及维护中的仓库状态"
+  verificationNote: "调研结果必须经过 SpaceRelax 确认后才能归档；分析结论必须经确认后才能实施；归档与分析形成闭环，避免跳过分析直接实施"
 
 action:
   steps:
