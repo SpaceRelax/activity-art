@@ -1,0 +1,62 @@
+# 基于契、道、势、险、地、法、情、序、鉴九个维度
+
+# ========== meta（契）：管理元数据 ==========
+meta:
+  id: integer  # 唯一标识符，直接使用 createdAt 的 Unix 毫秒时间戳（13位数字）
+  createdAt: string (本地时间)  # 创建时间，格式 "YYYY-MM-DD HH:MM:SS"
+  updatedAt: string (本地时间)  # 最后更新时间，格式同上
+
+# ========== purpose（道）：目标与底线 ==========
+purpose:
+  objective: string  # 一句话核心目标
+  successCriteria: string  # 业务层面的成功标准（可验证）
+  nonNegotiables: string  # 绝对底线，无则填"无"
+
+# ========== status（势）：当前阶段 ==========
+status:
+  phase: [initiation, growth, maturity, closure]  # 启动/定义，成长/执行，成熟/收尾，关闭/归档
+  nextMilestone: string  # 下一个关键里程碑事件描述，无则填"无"
+
+# ========== risk（险）：风险与假设 ==========
+risk:
+  keyAssumptions: string  # 达成目标所需的必要假设（1-3条，分号分隔）
+  topRisks:               # 主要风险列表，最多3条
+    - description: string   # 风险描述
+      mitigation: string    # 应对措施
+  fallbackDirection: string # 主路径失败后的备用方向，无则填"无"
+
+# ========== resource（地）：资源与约束 ==========
+resource:
+  resources: string   # 可用资源：tools、Skills、api、server等
+  hardConstraints: string  # 不可改变的硬性约束（如必须使用某接口、产出必须放到某处等）
+
+# ========== rule（法）：规则与流程 ==========
+rule:
+  decisionAuthority: string   # 决策权归属
+  acceptanceCriteria: string  # 交付物/任务完成的判定标准（DoD）
+  mandatoryProcesses: string  # 必须遵守的流程或习惯（跨步骤的纪律）
+
+# ========== stakeholder（情）：干系人（Subagent） ==========
+stakeholder:
+  subAgents:                 # 需要的 Subagent 列表
+    - type: string           # 类型
+      expectedSpeed: string  # 期望响应速度（可选）
+      expectedQuality: string # 期望产出质量（可选）
+      subjectiveNote: string  # 主观评价（可选）
+  verificationNote: string    # 如何验证 Subagent 是否满足期望（可选）
+
+# ========== action（序）：流程步骤 ==========
+action:
+  steps:                     # 尚未完成的步骤列表，按顺序
+    - description: string     # 步骤描述
+      dependency: string      # 执行前提条件（可选）
+  completed:                 # 已完成的步骤列表，按完成顺序
+    - description: string     # 已完成步骤描述
+      completedAt: string (本地时间)  # 完成时间（可选）
+  priorityPrinciple: string  # 步骤冲突时的取舍原则（可选）
+
+# ========== mirror（鉴）：历史镜鉴（可选） ==========
+mirror:
+  historicalPrecedents: string  # 最相似的过往案例及其结局
+  causalChain: string           # 关键前因（3-5个事件/决策）
+  keyLessons: string            # 可复用的核心教训
